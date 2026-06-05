@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Палитра «живого леса». 4 темы по времени суток.
+  Все цвета — в формате «R G B» (без rgb()),
+  чтобы Tailwind мог делать rgb(var(--x) / opacity).
+*/
+:root,
+[data-tod='dawn'] {
+  --sky-top: 240 211 196;       /* нежно-розовый */
+  --sky-bottom: 250 234 210;    /* кремово-персиковый */
+  --hills: 174 161 156;         /* туманные холмы */
+  --trees-far: 140 142 121;     /* туманная зелень */
+  --trees-mid: 105 124 92;      /* мох */
+  --trees-near: 75 89 65;       /* тёмный мох */
+  --ground: 95 121 84;          /* трава с росой */
+  --glow: 250 213 160;          /* мягкий рассветный */
+  --text-main: 59 52 46;
+  --text-soft: 120 105 92;
+}
+
+[data-tod='day'] {
+  --sky-top: 209 224 222;       /* мягкое тёплое небо */
+  --sky-bottom: 248 240 222;    /* кремовый горизонт */
+  --hills: 162 173 153;
+  --trees-far: 138 161 116;
+  --trees-mid: 102 127 84;
+  --trees-near: 70 92 56;
+  --ground: 87 117 70;
+  --glow: 240 201 136;          /* тёплое полуденное солнце */
+  --text-main: 59 52 46;
+  --text-soft: 110 102 92;
+}
+
+[data-tod='sunset'] {
+  --sky-top: 220 130 105;       /* коралл */
+  --sky-bottom: 245 187 119;    /* янтарный закат */
+  --hills: 138 90 85;
+  --trees-far: 117 95 78;
+  --trees-mid: 89 70 56;
+  --trees-near: 60 47 38;
+  --ground: 90 67 50;
+  --glow: 246 168 95;
+  --text-main: 50 38 32;
+  --text-soft: 110 90 78;
+}
+
+[data-tod='night'] {
+  --sky-top: 38 42 58;          /* глубокая тёплая ночь (не холодная) */
+  --sky-bottom: 65 55 70;       /* пурпурный горизонт */
+  --hills: 50 50 62;
+  --trees-far: 42 50 50;
+  --trees-mid: 28 38 38;
+  --trees-near: 18 24 26;
+  --ground: 24 32 28;
+  --glow: 240 180 120;          /* тёплые светящиеся акценты */
+  --text-main: 245 235 220;
+  --text-soft: 200 188 172;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: rgb(var(--sky-bottom));
+  color: rgb(var(--text-main));
+  @apply font-sans antialiased;
+  transition:
+    background-color 1.2s ease,
+    color 1.2s ease;
+}
+
+/* Все цвета на странице плавно подхватывают смену темы */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 1.2s;
+  transition-timing-function: ease;
+}
+/* Но клики/ховеры по кнопкам должны быть быстрыми */
+button,
+a,
+[role='button'] {
+  transition-duration: 0.18s;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--text-soft) / 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--text-soft) / 0.5);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(107, 79, 58, 0.45); /* bark, мягкая обводка */
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@layer components {
+  /* Полупрозрачная карточка «сквозь листву» — для подписей, шапок, пилюль */
+  .glass {
+    background: rgb(255 252 246 / 0.85);
+    backdrop-filter: blur(8px) saturate(110%);
+    -webkit-backdrop-filter: blur(8px) saturate(110%);
+    border: 1px solid rgb(255 255 255 / 0.5);
+  }
+}

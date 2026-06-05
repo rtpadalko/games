@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Link } from 'react-router-dom';
+import Screen from '@/shared/components/Screen';
+import Card from '@/shared/components/Card';
+export default function QuizPlaceholder() {
+    return (_jsx(Screen, { children: _jsxs(Card, { pad: "lg", className: "max-w-md text-center", children: [_jsx("div", { className: "text-5xl mb-3", children: "\u26A1" }), _jsx("h1", { className: "font-display text-2xl font-bold mb-2", children: "\u0412\u0438\u043A\u0442\u043E\u0440\u0438\u043D\u0430" }), _jsx("p", { className: "text-muted mb-6", children: "\u0418\u0433\u0440\u043E\u043A\u0438 \u0437\u0430\u0445\u043E\u0434\u044F\u0442 \u0441 \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u043E\u0432 \u043F\u043E \u043A\u043E\u0434\u0443 \u043A\u043E\u043C\u043D\u0430\u0442\u044B, \u043E\u0447\u043A\u0438 \u043D\u0430\u0447\u0438\u0441\u043B\u044F\u044E\u0442\u0441\u044F \u0437\u0430 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C. \u0417\u0434\u0435\u0441\u044C \u0431\u0443\u0434\u0435\u0442 \u043F\u043E\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F \u0431\u044D\u043A\u0435\u043D\u0434 \u2014 \u0434\u043E\u0431\u0430\u0432\u0438\u043C \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u043C \u044D\u0442\u0430\u043F\u043E\u043C." }), _jsx(Link, { to: "/", className: "text-sage-dark hover:text-sage text-sm font-medium", children: "\u2190 \u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0432 \u043B\u043E\u0431\u0431\u0438" })] }) }));
+}
