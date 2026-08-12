@@ -13,7 +13,8 @@ export default function MediaView({ media }: { media: Media }) {
           <img
             src={media.src}
             alt={media.alt ?? ''}
-            className="w-full max-h-[44vh] object-cover rounded-3xl shadow-soft"
+            //className="w-full max-h-[44vh] object-cover rounded-3xl shadow-soft"
+            className="w-full max-h-[44vh] object-contain rounded-3xl shadow-soft"
           />
           {media.caption && (
             <figcaption className="text-center text-ink/60 text-sm mt-2">
@@ -39,9 +40,31 @@ export default function MediaView({ media }: { media: Media }) {
     case 'audio':
       return (
         <div className="mb-5 glass rounded-3xl px-5 py-4 shadow-soft flex items-center gap-3">
-          <span className="text-3xl">🎧</span>
-          <audio src={media.src} controls preload="metadata" className="flex-1" />
-        </div>
+      <span className="text-3xl">🎧</span>
+      <audio 
+        src={media.src} 
+        controls 
+        preload="metadata" 
+        className="flex-1"
+        onTimeUpdate={(e) => {
+          const audio = e.currentTarget;
+          if (audio.currentTime > 30) {
+            audio.pause();
+            audio.currentTime = 30;
+          }
+        }}
+      />
+    </div>
       );
   }
 }
+
+
+
+/*case 'audio':
+      return (
+        <div className="mb-5 glass rounded-3xl px-5 py-4 shadow-soft flex items-center gap-3">
+          <span className="text-3xl">🎧</span>
+          <audio src={media.src} controls preload="metadata" className="flex-1" />
+        </div>
+      ); */

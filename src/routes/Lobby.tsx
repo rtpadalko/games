@@ -13,9 +13,9 @@ interface GameTile {
 const games: GameTile[] = [
   {
     to: '/alias',
-    title: 'Алиас',
+    title: 'Крокодил',
     description: 'Объясняй слова за минуту. Команды соревнуются на скорость и фантазию.',
-    emoji: '🦊',
+    emoji: '🐊',
     ready: true,
   },
   {

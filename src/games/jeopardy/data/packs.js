@@ -9,9 +9,11 @@
  * Подробная инструкция — в PACKS.md в этой же папке.
  */
 import { STARTER_PACK } from './starterPack';
+import { FILMS_PACK } from './filmsPack';
 /** Все паки, доступные в селекторе на экране Setup. */
 export const ALL_PACKS = [
     STARTER_PACK,
+    FILMS_PACK,
     // Добавьте сюда свои паки:
     // MY_PACK,
 ];
